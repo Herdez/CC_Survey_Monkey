@@ -1,0 +1,21 @@
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %> 
+
+<div id="form">
+  <form id="que" name="user" action="/create/user/<%= @user.id %>/survey/<%= @survey.id %>" method="POST">     
+    <label for="question_title">Write here your question:</label>
+    <input id="question" type="text" name="question">
+    <br><br>
+    <label for="option">Add option:</label>
+    <input id="option1" type="text" name="option1">
+    <br><br>
+    <label for="option">Add option:</label>
+    <input id="option2" type="text" name="option2">
+    <br><br>
+    <label for="option">Add option:</label>
+    <input id="option3" type="text" name="option3">
+    <br><br>
+    <input type="submit" value="Create" id="submit">
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<h1>Bienvenido!</h1>
+
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %> 
+
+<div id="form">
+  <form name="user" action="/survey/user/<%= @user.id %>" method="POST">     
+    <label for="title">Write here title of survey:</label>
+    <input id="title" type="text" name="title">
+    <input type="submit" value="Create" id="submit">
+  </form>
+</div>
