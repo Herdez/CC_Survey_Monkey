@@ -1,0 +1,12 @@
+<h1>Elige tu survey</h1>
+
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %>
+
+<%= @survey_list.each do |surveys| %>
+<p><a href="/survey/user/<%= survey.id %>/answer_survey"><%= surveys.id %></a></p>
+
+<%= end %>
+
+  

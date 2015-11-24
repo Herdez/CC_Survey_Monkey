@@ -21,6 +21,7 @@ before '/survey/user/:user_id' do
 	end
 	@user = User.find(session[:user_id])
 end 
+#GET=============================================================================================
 
 get '/' do
   # La siguiente linea hace render de la vista 
@@ -40,6 +41,20 @@ get '/create' do
   erb :'survey/survey_title'
 end
 
+get '/survey_list' do
+	puts "*" * 50 
+	puts@survey_list
+	puts "*" * 50 
+	@survey_list = Survey.all	
+	erb :'survey/survey_list'
+end
+
+get '/survey_list/answer_survey' do 
+	
+	erb :'survey/answer_survey/'
+end
+
+#POST=============================================================================================
 post '/survey/user/:user_id' do
   @survey = Survey.create(title: params["title"])
   @survey_id = Survey.last.id
@@ -48,8 +63,8 @@ post '/survey/user/:user_id' do
 end
 
 post '/create/user/:user_id/survey/:survey_id' do
-  puts "*" * 50
-	puts params
+  #puts "*" * 50
+	#puts params
 	@question = Question.create(question: params["question"], survey_id: params[:survey_id])
   @option1 = Option.create(option: params["option1"], question_id: @question.id)
   @option2 = Option.create(option: params["option2"], question_id: @question.id)
