@@ -1,0 +1,27 @@
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %>
+
+<div align="center">
+	<h2><%= @survey.title %></h2>
+  <form name="myform" action="" method="POST">
+   <br><br>
+
+   <% @questions.each do |question| %>
+
+	   <label for="question_title">Pregunta:</label>
+	   <input id="question" type="text" name="question[<%= question.id %>]" value="<%= question.question %>" disabled>
+	   <br><br>
+	   <% @options.where(question_id: question.id).each do |option| %>
+	      
+	      <% if option.option != "" %>
+          <input type ="radio" name="option[<%= question.id %>]" value="<%= option.option %>"><%=option.option %>
+        <% end %>
+     <br>
+	   <% end %>
+
+  <% end %>
+  <br><br>
+  <input type="submit" value="Save" id="submit">
+  </form>
+</div>

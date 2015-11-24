@@ -4,6 +4,6 @@
   <p><%= @errors %></p>
 <% end %> 
 
-<% @survey_list.each do |surveys| %>
-<a href="/user/<%= surveys.id %>/answer_survey"></a>
+<% @survey_list.each do |survey| %>
+<a href="/survey/<%= survey.id %>/poll_survey'"><%= survey.title</a>
 <% end %> 
