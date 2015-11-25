@@ -4,18 +4,15 @@
 
 <div align="center">
 	<h2><%= @survey.title %></h2>
-  <form name="myform" action="" method="POST">
+  <form name="myform" action="/user/<%= @user.id %>/survey/<%= @survey.id %>/question/option" method="POST">
    <br><br>
 
    <% @questions.each do |question| %>
-
-	   <label for="question_title">Pregunta:</label>
-	   <input id="question" type="text" name="question[<%= question.id %>]" value="<%= question.question %>" disabled>
-	   <br><br>
+     <h4><%= question.question %></h4>
 	   <% @options.where(question_id: question.id).each do |option| %>
 	      
 	      <% if option.option != "" %>
-          <input type ="radio" name="option[<%= question.id %>]" value="<%= option.option %>"><%=option.option %>
+          <input type ="radio" name="option[<%= question.id %>]" value="<%= option.id %>"><%=option.option %>
         <% end %>
      <br>
 	   <% end %>

@@ -1,0 +1,17 @@
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %>
+
+<h2><%= @survey.title %></h2>
+
+<% @questions.each do |question| %>
+  <p><%= question.question %></p>
+  <% @options.where(question_id: question.id).each do |option| %>
+    <% if option.option != "" %>
+    	<p><%= option.option %></p>
+   		<p><%= @stat.where(choice: option).count %></p>
+   		<p><%= (((@stat.where(choice: option).count).to_f / (@user_all.count).to_f) * 100).round(2) %>%</p>
+    <% end %>
+  <% end %> 
+  
+<% end %>

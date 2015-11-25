@@ -1,0 +1,9 @@
+<% if @errors %>
+  <p><%= @errors %></p>
+<% end %>
+
+<% @record_user.each do |record| %>
+    <% @survey.where(id: record.survey_id).each do |survey| %>
+       <p><a href="/user/<%= @user.id %>/survey/<%= survey.id %>/stats"><%= survey.title %></a><p>
+    <% end %>
+<% end %>
