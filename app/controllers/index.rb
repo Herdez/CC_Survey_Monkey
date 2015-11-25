@@ -68,15 +68,21 @@ end
 # 	erb :'survey/answer_survey/'
 # end
 
+get '/stats_surveys' do 
+	@stats = Stat.all
+	erb :'/survey/stats_surveys'
+end
+
+
 #POST=============================================================================================
 
 get '/survey/:survey_id/poll_survey' do
 	@survey = Survey.find(params[:survey_id])
 	@questions = @survey.questions
 	@options = Option.where(survey_id: @survey.id)
-	puts "*" * 50
-	p @questions
-	p @options
+	# puts "*" * 50
+	# p @questions
+	# p @options
   erb :'survey/poll_survey'
 end
 
